@@ -45,8 +45,8 @@ jobs:
       - run: return 1
 
       - run: 
-          command: |
-            echo "Error occurs"
+          name: on error
+          command: echo "Error occurs"
           when: on_fail
   execute_command: #job name
     docker: # it uses the docker executor
