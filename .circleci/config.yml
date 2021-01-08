@@ -10,6 +10,7 @@ commands:
         default: Nothing
     steps:
       - run: echo <<parameters.print_value>>
+      
 jobs:
   print_my_name: #job name
     docker: # it uses the docker executor
@@ -37,6 +38,11 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: cat ~/output.txt
+  cause_error: 
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
   execute_command: #job name
     docker: # it uses the docker executor
       - image: circleci/node:13.8.0
@@ -54,3 +60,4 @@ workflows:
       #     requires:
       #       - save_hello_world_output
       - execute_command
+      - cause_error
