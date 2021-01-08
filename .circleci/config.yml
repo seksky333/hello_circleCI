@@ -43,6 +43,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: return 1
+      - run: echo "Error occurs"
+          when: on_fail
   execute_command: #job name
     docker: # it uses the docker executor
       - image: circleci/node:13.8.0
